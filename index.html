@@ -100,7 +100,7 @@
         logBox.scrollTop = logBox.scrollHeight;
     }
 
-    // Инициализация новой архитектуры FFmpeg 0.12.x
+     // Инициализация новой архитектуры FFmpeg 0.12.x
     async function initFFmpeg() {
         try {
             const { FFmpeg } = window.FFmpeg;
@@ -114,24 +114,27 @@
 
             statusDiv.textContent = "Загрузка ядра WebAssembly...";
             
-            const baseURL = 'https://jsdelivr.net'; 
+            // Используем стабильное и проверенное зеркало unpkg с указанием точной версии (0.12.6)
+            const baseURL = 'https://unpkg.com';
+            
             await ffmpeg.load({
                 coreURL: `${baseURL}/ffmpeg-core.js`,
-                wasmURL: `${baseURL}/ffmpeg-core.wasm` 
+                wasmURL: `${baseURL}/ffmpeg-core.wasm`
             });
 
             statusDiv.textContent = "Готов к работе! Закиньте файл.";
             statusDiv.style.color = "#4CAF50";
             log("Система успешно запущена и готова к пакетной обработке.");
             
-            // Активируем флаг готовности
             isReady = true;
         } catch (error) {
             statusDiv.textContent = "Критическая ошибка запуска ядра.";
             statusDiv.style.color = "#f44336";
             log("Ошибка загрузки: " + error);
+            console.error(error); // Выводим детальную ошибку в консоль браузера
         }
     }
+
 
     // НАВЕШИВАЕМ СОБЫТИЯ СРАЗУ, ПРИ ОТКРЫТИИ СТРАНИЦЫ
     dropZone.addEventListener('click', () => {
