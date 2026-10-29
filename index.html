@@ -5,9 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lossless Video Rotator (Web App)</title>
     
-    <!-- Подключаем стабильную версию FFmpeg, работающую БЕЗ жестких заголовков изоляции -->
-    <script src="https://cdn.jsdelivr.net/npm/@ffmpeg/ffmpeg@0.12.15/dist/umd/ffmpeg.min.js"></script>
-    <script src="https://jsdelivr.net"></script>
+<!-- Подключаем сам FFmpeg (UMD версию) -->
+<script src="https://unpkg.com"></script>
+<!-- Подключаем утилиты, необходимые для работы fetchFile -->
+<script src="https://unpkg.com"></script>
 
     <style>
         body {
@@ -68,7 +69,7 @@
 <body>
 
 <div class="container">
-    <h1>Lossless Video Rotator Fixer 🌐</h1>
+    <h1>Lossless Video Rotator Fixer</h1>
     <p>Мгновенный сброс флага поворота в видео без потери качества. Всё обрабатывается прямо в браузере локально!</p>
     
     <div id="drop-zone">
